@@ -1,0 +1,30 @@
+<div class="row">
+    <br/>
+    <style>
+        #articles .parent_menu{
+            font-size:11pt!important;
+        }
+        #articles  .panel-title{
+            font-size:9pt!important;
+        }
+        #articles  .list-group-item{
+            font-size:9pt!important;
+            padding: 0px 0px;
+        }
+
+        #articles  .panel-body{
+            padding:0px;
+
+        }
+    </style>
+    <div class="col-md-12" id="articles">
+        <accordion close-others="oneAtATime" ng-repeat="information in informations">
+            <accordion-group >
+                <accordion-heading>
+                    {{information.title}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                </accordion-heading>
+                <div ng-bind-html="information.body" class="conteiner"> </div>
+            </accordion-group>
+        </accordion>
+    </div>
+</div>

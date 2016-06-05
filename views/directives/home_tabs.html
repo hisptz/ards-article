@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="pull-right">
+        <div id="page_switcher">
+            <div class="onoffswitch pull-right">
+                <input type="checkbox" class="toggleBtn onoffswitch-checkbox" ng-click="switchPage()"  id="onoffswitch6" >
+                <label for="onoffswitch6" class="onoffswitch-label">
+                    <div class="onoffswitch-inner " style=""></div>
+                    <div class="onoffswitch-switch" style=""></div>
+                </label>
+            </div>
+
+        </div>
+    </div>
+    <ul id="tabs">
+         <li id="{{homeTabActiveClass[tab.value].active}}" ng-repeat="tab in tabs track by $index" >
+             <a  href="#/{{tab.value|lowercase}}" style="cursor: pointer;" id="id_{{tab.value|lowercase}}" >
+                 <em>{{tab.value}}</em>
+             </a>
+         </li>
+    </ul>
+</div>
