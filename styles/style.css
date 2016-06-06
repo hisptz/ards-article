@@ -587,23 +587,6 @@ div#middlePageHide
 }
 
 
-.top-bar {
-    font-size: 16pt;
-    font-weight: normal;
-    color: #585D61;
-}
-
-.vertical-spacing{
-    margin-top: 20px;
-}
-
-table
-{
-    font-size: 13px;
-    line-height: 24px;
-    table-layout: fixed;
-    margin-bottom: 10px;
-}
 
 .Image-manager{
     /*margin-left: 5px;*/
@@ -766,6 +749,3 @@ table#image_table td img{
     border-color: rgba(0,0,0,.1)rgba(0,0,0,.1)rgba(0,0,0,.25)!important;
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false)!important;
 }
-
-
-

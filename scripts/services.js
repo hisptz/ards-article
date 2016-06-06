@@ -397,7 +397,6 @@ articlesServices.service('utilityService',function(){
 
         return tabs;
     }
-
     utilityService.refineTabContent = function(events){
         var content = [];
         var activeClass = "";
@@ -410,7 +409,6 @@ articlesServices.service('utilityService',function(){
         return content;
 
     }
-
     utilityService.refineMessage = function(message){
         var content = [];
         var activeClass = "";

@@ -1,7 +1,6 @@
 'use strict';
 
 /* Filters */
-
 var articlesFilters = angular.module('articlesFilters', []);
 
 

@@ -1,7 +1,6 @@
 'use strict';
 
 /* App Module */
-
 var home = angular.module('articles',
                     ['ui.bootstrap',
                         'ngRoute',

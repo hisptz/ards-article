@@ -2,11 +2,9 @@
 <html manifest="articles.appcache" ng-app="articles">
     <head>
         <title>ARDS ARTICLES</title>
-
         <meta name="description" content="DHIS 2">
         <meta name="keywords" content="DHIS 2">        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
         <!-- DHIS2 Settings initialization for a baseUrl that is used for the menu -->
         <script type="text/javascript">
             window.dhis2 = window.dhis2 || {};
@@ -15,148 +13,147 @@
 //          dhis2.settings.baseUrl = '../..';
         </script>
 
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/jquery.min.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/ui/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/jquery.plugin.min.js"></script>
-        
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.min.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.picker.min.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.plus.min.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.picker.ext.js"></script>
-        
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.coptic.min.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.ethiopian.min.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.islamic.min.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.julian.min.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.nepali.min.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/jquery.min.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/ui/jquery-ui.min.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/jquery.plugin.min.js"></script>
 
-        <!-- google feeds API -->
-        <script
-                type="text/javascript"
-                src="https://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22feeds%22%2C%22version%22%3A%221.0%22%2C%22nocss%22%3Atrue%7D%5D%7D"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.min.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.picker.min.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.plus.min.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.picker.ext.js"></script>
 
-        <script type="text/javascript" src="../../../dhis-web-commons/ckeditor/ckeditor.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/ckeditor/config.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/ckeditor/lang/en.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/ckeditor/styles.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.coptic.min.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.ethiopian.min.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.islamic.min.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.julian.min.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/jQuery/calendars/jquery.calendars.nepali.min.js"></script>
 
-        <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/javascripts/jQuery/ui/css/redmond/jquery-ui.css">
-        <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/javascripts/jQuery/calendars/css/ui.calendars.picker.css">
-        <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/javascripts/jQuery/calendars/css/ui-redmond.calendars.picker.css">
+            <!-- google feeds API -->
+            <script
+                    type="text/javascript"
+                    src="https://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22feeds%22%2C%22version%22%3A%221.0%22%2C%22nocss%22%3Atrue%7D%5D%7D"></script>
 
-        <!-- vendor css-->
-        <link type="text/css" rel="stylesheet" href="scripts/vendor/bootstrap-select/bootstrap-select.min.css">
-        <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/ckeditor/skins/moono/editor.css">
+            <script type="text/javascript" src="../../../dhis-web-commons/ckeditor/ckeditor.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/ckeditor/config.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/ckeditor/lang/en.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/ckeditor/styles.js"></script>
 
+            <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/javascripts/jQuery/ui/css/redmond/jquery-ui.css">
+            <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/javascripts/jQuery/calendars/css/ui.calendars.picker.css">
+            <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/javascripts/jQuery/calendars/css/ui-redmond.calendars.picker.css">
 
-        <script type="text/javascript" src="../../../dhis-web-commons/bootstrap/js/bootstrap.min.js"></script>
-        <link type="text/css" rel="stylesheet"  href="../../../dhis-web-commons/bootstrap/css/bootstrap.min.css">
-
-        <!-- vendor js-->
-        <script type="text/javascript" src="scripts/vendor/bootstrap-select/bootstrap-select.min.js"></script>
+            <!-- vendor css-->
+            <link type="text/css" rel="stylesheet" href="scripts/vendor/bootstrap-select/bootstrap-select.min.css">
+            <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/ckeditor/skins/moono/editor.css">
 
 
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular-resource.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular-route.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular-cookies.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular-animate.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular-sanitize.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular-messages.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/ui-bootstrap.js"></script>
-       
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/moment/moment-with-langs.min.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/bootstrap/js/bootstrap.min.js"></script>
+            <link type="text/css" rel="stylesheet"  href="../../../dhis-web-commons/bootstrap/css/bootstrap.min.css">
 
-        <!-- vendor angular js-->
-        <script type="text/javascript" src="scripts/vendor/angular-bootstrap-select/src/angular-bootstrap-select.js"></script>
-        <script type="text/javascript" src="scripts/vendor/angular-ckeditor/angular-ckeditor.min.js"></script>
+            <!-- vendor js-->
+            <script type="text/javascript" src="scripts/vendor/bootstrap-select/bootstrap-select.min.js"></script>
 
 
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/underscore.min.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.util.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/commons.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/commons.ajax.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.availability.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.trigger.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.validation.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.ss.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.ls.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.idb.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.memory.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.contextmenu.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.appcache.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/ouwt/ouwt.js"></script>
-        <script src="../../../dhis-web-commons/javascripts/dhis2/dhis2.tracker.metadata.js"></script>
-        
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/plugins/angularLocalStorage.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/plugins/angular-translate.min.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/plugins/select.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.angular.directives.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.angular.map.directive.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.angular.services.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.angular.filters.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.angular.validations.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.angular.controllers.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular-resource.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular-route.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular-cookies.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular-animate.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular-sanitize.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/angular-messages.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/ui-bootstrap.js"></script>
 
-        <!-- ANALYSIS--->
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/moment/moment-with-langs.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="scripts/analysis/jquery-ui-multiselect/demos/assets/style.css" />
-        <link rel="stylesheet" type="text/css" href="scripts/analysis/assets/prettify.css" />
-         <script type="text/javascript" src="scripts/analysis/assets/prettify.js"></script>
+            <!-- vendor angular js-->
+            <script type="text/javascript" src="scripts/vendor/angular-bootstrap-select/src/angular-bootstrap-select.js"></script>
+            <script type="text/javascript" src="scripts/vendor/angular-ckeditor/angular-ckeditor.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="scripts/analysis/jquery-ui-multiselect/jquery.multiselect.css" />
-        <link rel="stylesheet" type="text/css" href="scripts/analysis/jquery-ui-multiselect/jquery.multiselect.filter.css" />
-        <link rel="stylesheet" type="text/css" href="scripts/analysis/jquery-ui-multiselect/demos/assets/prettify.css" />
-        <script type="text/javascript" src="scripts/analysis/Highcharts/js/highcharts.js"></script>
-        <script type="text/javascript" src="scripts/analysis/Highcharts/js/modules/exporting.js"></script>
-        <script type="text/javascript" src="scripts/analysis/Highcharts/js/themes/sand-signika.js"></script>
-        <script type="text/javascript" src="scripts/analysis/jquery-ui-multiselect/src/jquery.multiselect.min.js"></script>
-        <script type="text/javascript" src="scripts/analysis/jquery-ui-multiselect/src/jquery.multiselect.filter.js"></script>
-        <script type="text/javascript" src="scripts/analysis/jquery-ui-multiselect/demos/assets/prettify.js"></script>
-        <script type="text/javascript" src="scripts/analysis/orgUnits.js"></script>
-        <script type="text/javascript" src="scripts/analysis/periods.js"></script>
-        <script type="text/javascript" src="scripts/analysis/data_element.js"></script>
-        <script type="text/javascript" src="scripts/analysis/bar.js"></script>
-        <script type="text/javascript" src="scripts/analysis/line.js"></script>
-        <script type="text/javascript" src="scripts/analysis/column.js"></script>
-        <script type="text/javascript" src="scripts/analysis/table.js"></script>
-        <script type="text/javascript" src="scripts/analysis/pie.js"></script>
-        <script type="text/javascript" src="scripts/analysis/spiderweb.js"></script>
-        <script type="text/javascript" src="scripts/analysis/staked.js"></script>
-        <script type="text/javascript" src="scripts/analysis/data_analysis1.js"></script>
-        <script type="text/javascript" src="scripts/analysis/buildmenu.js"></script>
-        <script type="text/javascript" src="scripts/vendor/angular-feeds/angular-feeds.js"></script>
 
-        <!-- ANALYSIS--->
-        
-        <script type="text/javascript" src="scripts/app.js"></script>
-        <script type="text/javascript" src="scripts/services.js"></script>
-        <script type="text/javascript" src="scripts/directives.js"></script>        
-        <script type="text/javascript" src="scripts/controllers.js"></script>
-        <script type="text/javascript" src="scripts/filters.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/underscore.min.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.util.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/commons.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/commons.ajax.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.availability.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.trigger.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.validation.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.ss.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.ls.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.idb.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.memory.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.storage.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.contextmenu.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.appcache.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/ouwt/ouwt.js"></script>
+            <script src="../../../dhis-web-commons/javascripts/dhis2/dhis2.tracker.metadata.js"></script>
 
-        <!-- Menu scripts -->
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.translate.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.menu.js"></script>
-        <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.menu.ui.js"></script>
-        <script type="text/javascript" src="../../../main.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/plugins/angularLocalStorage.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/plugins/angular-translate.min.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/angular/plugins/select.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.angular.directives.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.angular.map.directive.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.angular.services.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.angular.filters.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.angular.validations.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.angular.controllers.js"></script>
 
-        <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/font-awesome/css/font-awesome.min.css"/>
-        <link type="text/css" rel="stylesheet" media="screen" href="../../../dhis-web-commons/css/widgets.css"/>
-        <link type="text/css" rel="stylesheet" media="screen" href="../../../dhis-web-commons/css/menu.css">
-        <link type="text/css" rel="stylesheet" media="print" href="../../../dhis-web-commons/css/print.css">
-        <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/javascripts/angular/plugins/select.css">
-        <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/javascripts/angular/plugins/select2.css">
-        <link type="text/css" rel="stylesheet" media="screen" href="scripts/vendor/bower_components/angular-feeds/angular-feeds.css">
-        <link type="text/css" rel="stylesheet" media="screen" href="scripts/vendor/bower_components/angular-feeds/prettify.css">
-        <link type="text/css" rel="stylesheet" href="styles/style.css">
-        <link type="text/css" rel="stylesheet" href="styles/tabstyle.css">
+            <!-- ANALYSIS--->
 
-        <!-- Custom user styles and scripts -->
-        <link type="text/css" rel="stylesheet" href="../../../api/files/style" />
-        <script type="text/javascript" src="../../../api/files/script"></script>
+            <link rel="stylesheet" type="text/css" href="scripts/analysis/jquery-ui-multiselect/demos/assets/style.css" />
+            <link rel="stylesheet" type="text/css" href="scripts/analysis/assets/prettify.css" />
+            <script type="text/javascript" src="scripts/analysis/assets/prettify.js"></script>
 
+            <link rel="stylesheet" type="text/css" href="scripts/analysis/jquery-ui-multiselect/jquery.multiselect.css" />
+            <link rel="stylesheet" type="text/css" href="scripts/analysis/jquery-ui-multiselect/jquery.multiselect.filter.css" />
+            <link rel="stylesheet" type="text/css" href="scripts/analysis/jquery-ui-multiselect/demos/assets/prettify.css" />
+            <script type="text/javascript" src="scripts/analysis/Highcharts/js/highcharts.js"></script>
+            <script type="text/javascript" src="scripts/analysis/Highcharts/js/modules/exporting.js"></script>
+            <script type="text/javascript" src="scripts/analysis/Highcharts/js/themes/sand-signika.js"></script>
+            <script type="text/javascript" src="scripts/analysis/jquery-ui-multiselect/src/jquery.multiselect.min.js"></script>
+            <script type="text/javascript" src="scripts/analysis/jquery-ui-multiselect/src/jquery.multiselect.filter.js"></script>
+            <script type="text/javascript" src="scripts/analysis/jquery-ui-multiselect/demos/assets/prettify.js"></script>
+            <script type="text/javascript" src="scripts/analysis/orgUnits.js"></script>
+            <script type="text/javascript" src="scripts/analysis/periods.js"></script>
+            <script type="text/javascript" src="scripts/analysis/data_element.js"></script>
+            <script type="text/javascript" src="scripts/analysis/bar.js"></script>
+            <script type="text/javascript" src="scripts/analysis/line.js"></script>
+            <script type="text/javascript" src="scripts/analysis/column.js"></script>
+            <script type="text/javascript" src="scripts/analysis/table.js"></script>
+            <script type="text/javascript" src="scripts/analysis/pie.js"></script>
+            <script type="text/javascript" src="scripts/analysis/spiderweb.js"></script>
+            <script type="text/javascript" src="scripts/analysis/staked.js"></script>
+            <script type="text/javascript" src="scripts/analysis/data_analysis1.js"></script>
+            <script type="text/javascript" src="scripts/analysis/buildmenu.js"></script>
+            <script type="text/javascript" src="scripts/vendor/angular-feeds/angular-feeds.js"></script>
+
+            <!-- ANALYSIS--->
+
+            <script type="text/javascript" src="scripts/app.js"></script>
+            <script type="text/javascript" src="scripts/services.js"></script>
+            <script type="text/javascript" src="scripts/directives.js"></script>
+            <script type="text/javascript" src="scripts/controllers.js"></script>
+            <script type="text/javascript" src="scripts/filters.js"></script>
+
+            <!-- Menu scripts -->
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.translate.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.menu.js"></script>
+            <script type="text/javascript" src="../../../dhis-web-commons/javascripts/dhis2/dhis2.menu.ui.js"></script>
+            <script type="text/javascript" src="../../../main.js"></script>
+
+            <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/font-awesome/css/font-awesome.min.css"/>
+            <link type="text/css" rel="stylesheet" media="screen" href="../../../dhis-web-commons/css/widgets.css"/>
+            <link type="text/css" rel="stylesheet" media="screen" href="../../../dhis-web-commons/css/menu.css">
+            <link type="text/css" rel="stylesheet" media="print" href="../../../dhis-web-commons/css/print.css">
+            <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/javascripts/angular/plugins/select.css">
+            <link type="text/css" rel="stylesheet" href="../../../dhis-web-commons/javascripts/angular/plugins/select2.css">
+            <link type="text/css" rel="stylesheet" media="screen" href="scripts/vendor/bower_components/angular-feeds/angular-feeds.css">
+            <link type="text/css" rel="stylesheet" media="screen" href="scripts/vendor/bower_components/angular-feeds/prettify.css">
+            <link type="text/css" rel="stylesheet" href="styles/style.css">
+            <link type="text/css" rel="stylesheet" href="styles/tabstyle.css">
+
+            <!-- Custom user styles and scripts -->
+            <link type="text/css" rel="stylesheet" href="../../../api/files/style" />
+            <script type="text/javascript" src="../../../api/files/script"></script>
     </head>
 
     <body>
