@@ -85,7 +85,6 @@ var homeControllers = angular.module('articlesControllers', [])
 
     $scope.currentTab = 'all';
     $scope.oneAtATime = true;
-
     String.prototype.Capitalize = function() {
         return this.charAt(0).toUpperCase() + this.slice(1);
     }
@@ -117,7 +116,7 @@ var homeControllers = angular.module('articlesControllers', [])
     }
 
     $scope.switchPage = function(){
-        window.location.href = '/demo/api/apps/cms/index.html#/cms';
+        window.location.href = '/'+dhis2.settings.baseUrl+'/api/apps/cms/index.html';
     }
     // Load favourites report tables
     $scope.getReportTable = function(){
@@ -214,6 +213,17 @@ var homeControllers = angular.module('articlesControllers', [])
 
 
     }
+
+
+    articlesService.loggedUserRole().then(function(loggedIn){
+        var view_cms = false;
+        if ( loggedIn.indexOf('See CMS') >= 0 ||  loggedIn.indexOf('ALL') >= 0 ) {
+            view_cms=!view_cms;
+        }
+
+        $scope.show_cms = view_cms;
+
+    });
 
     $scope.loadTabs();
     $scope.loadArticles();

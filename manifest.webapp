@@ -1,7 +1,7 @@
 {
     "version": "0.1",
-    "name": "ARDS ARTICLES",
-    "description": "ARDS ARTICLES",
+    "name": "Article",
+    "description": "Article",
     "launch_path": "index.html",
     "icons": {
         "16": "/img/icons/mortar-16.png",

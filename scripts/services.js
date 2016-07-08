@@ -364,6 +364,10 @@ articlesServices.service('articlesService',['$http','DHIS2URL',function($http,DH
     }
 
 
+    home.loggedUserRole = function(){
+        var url = "../../../api/me/authorization.json";
+        return $http.get(url).then(handleSuccess, handleError('Error loading logeged in user'));
+    }
     return home;
 }]);
 
