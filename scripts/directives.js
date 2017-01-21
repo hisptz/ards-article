@@ -71,48 +71,55 @@ articlesDirectives.directive("homeRightMenu", ['articlesService',function(articl
     };
 }]);
 
-articlesDirectives.directive("homeLeftMenu", ['articlesService','utilityService',function(articlesService,utilityService){
 
+articlesDirectives.directive("homeLeftMenu", ['articlesService','utilityService','$location',function(articlesService,utilityService,$location){
     return {
         restrict: "E",
         replace: true,
         scope: {
             reportTables: "=reportTables",
             documentObject: "=documentObject",
+            tab: "=tabs",
+            menu: "=menu",
+            favourite: "=favourite"
         },
         templateUrl: "views/directives/home_left_menu.html",
         link: function($scope, element, attrs) {
             $scope.error  = false;
             $scope.errorMessage  = "no document found";
 
-            $scope.loadExternalLinks = function(){
+            $scope.appBaserUrl = dhis2.settings.baseUrl;
 
-                articlesService.listExternalLink().then(function(response){
-                    $scope.externalLinks = response;
-                });
-            }
+            $scope.openTab = {};
+            $scope.openChildTab = {};
+            $scope.statusClass = {};
+            $scope.openTab['analysis'] = true;
+            $scope.openAccordion = function(parentElement,childElement){
 
-
-            // get report tables
-            $scope.getReportTable = function () {
-
-                if(localStorage.getItem('reportTables')){
-                    $scope.reportTables = utilityService.prepareReportTables(JSON.parse(localStorage.getItem('reportTables')));
-                }else{
-
-                    articlesService.getReportTables().then(function(data){
-                        $scope.reportTables = utilityService.prepareReportTables(data.reportTables);
-                        localStorage.setItem('reportTables',JSON.stringify(data.reportTables));
-                    },function(error){
-
-                    });
+                if ( !$scope.openTab[parentElement] ) {
+                    $scope.openTab = {};
+                    $scope.statusClass = {};
+                    $scope.openTab[parentElement] = true;
+                    $scope.statusClass[$scope.favourite] = "alert-success";
                 }
 
+                if ( !$scope.openChildTab[childElement] && childElement != "" ) {
+                    $scope.openChildTab = {};
+                    $scope.statusClass = {};
+                    $scope.openChildTab[childElement] = true;
+                    $scope.statusClass[$scope.favourite] = "alert-success";
+                    console.log(childElement);
+                }
 
+                $location.path('/'+parentElement+'/menu/'+childElement);
             }
 
-            $scope.getReportTable();
-
+            $scope.$watch($scope.tab,function(newTab,oldTab){
+                $scope.openTab[$scope.tab] = true;
+                $scope.openChildTab[$scope.menu] = true;
+                $scope.statusClass[$scope.favourite] = "alert-success";
+                //$location.path('/'+scope.tab+'/menu/'+scope.menu);
+            });
 
 
             $scope.loadExternalLinks = function(){
@@ -121,10 +128,28 @@ articlesDirectives.directive("homeLeftMenu", ['articlesService','utilityService'
                     $scope.externalLinks = response;
                 });
             }
+
+
+            $scope.loadExternalLinks = function(){
+
+                articlesService.listExternalLink().then(function(response){
+                    $scope.externalLinks = response;
+                });
+            }
+
+            $scope.documents = null;
+
+            $scope.listDocuments = function(){
+                articlesService.loadDocuments().then(function(data){
+
+                    $scope.documents = data.documents;
+                })
+            }
+
+            $scope.listDocuments();
 
 
             $scope.loadExternalLinks();
-            $scope.getReportTable();
 
         }
     };

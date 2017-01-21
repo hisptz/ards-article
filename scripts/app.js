@@ -32,6 +32,18 @@ var home = angular.module('articles',
             templateUrl: "views/analysis.html",
             controller: 'analysisController'
         })
+        .when('/:tab/menu/:menuId', {
+            templateUrl: "views/home.html",
+            controller: 'homeController'
+        })
+        .when('/:tab/menu/:menuId/favourite/:favourite', {
+            templateUrl: "views/analysis.html",
+            controller: 'analysisController'
+        })
+        .when('/:tab/menu/:menuId/favourite/:favourite/period/:period/orgunit/:orgunit/dx/:dx/type/:type/category/:category', {
+            templateUrl: "views/analysis.html",
+            controller: 'analysisDataController'
+        })
         .otherwise('/');
     $translateProvider.preferredLanguage('en');
     $translateProvider.useSanitizeValueStrategy('escaped');

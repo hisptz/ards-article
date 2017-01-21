@@ -95,6 +95,14 @@ articlesServices.service('articlesService',['$http','DHIS2URL',function($http,DH
     }
 
 
+    home.loadDocuments = function(){
+        var url = "/api/documents.json?paging=false";
+        return $http({method:'GET',url:url}).then(handleSuccess, handleError("Error  updating external links"));
+
+    }
+
+
+
     home.removeDocument = function(charts){
         // save charts to storage
         var documents = [];
@@ -113,6 +121,17 @@ articlesServices.service('articlesService',['$http','DHIS2URL',function($http,DH
 
         var url = "../../../api/dataStore/chartsStorage/availableCharts";
         return $http({method:'POST',data:modifiedCharts,url:url}).then(handleSuccess, handleError("Error storing adding charts"));
+    }
+
+    home.updateCharts = function(charts){
+        // save charts to storage
+        var modifiedCharts = [];
+        angular.forEach(charts,function(chartValue,chartIndex){
+            modifiedCharts.push({id:chartValue.id,name:chartValue.displayName});
+        });
+
+        var url = "../../../api/dataStore/chartsStorage/availableCharts";
+        return $http({method:'PUT',data:modifiedCharts,url:url}).then(handleSuccess, handleError("Error storing adding charts"));
     }
 
 
@@ -229,7 +248,6 @@ articlesServices.service('articlesService',['$http','DHIS2URL',function($http,DH
         return $http({method:'POST',data:tabContents,url:url}).then(handleSuccess, handleError("Error storing tab contents"));
     }
 
-
     home.updateTabContent = function(tabContents){
         var url = "../../../api/dataStore/articles/tabContents";
         return $http({method:'PUT',data:tabContents,url:url}).then(handleSuccess, handleError("Error updating tab contents"));
@@ -254,6 +272,127 @@ articlesServices.service('articlesService',['$http','DHIS2URL',function($http,DH
     }
 
 
+    home.getDataDimension = function (analytics,dataArray) {
+        var dx = analytics.metaData.dx;
+        var names = analytics.metaData.names;
+        var datadimensions = [];
+
+        angular.forEach(dx, function(value){
+            if(names[value]){
+                datadimensions.push({name:names[value],id:value});
+            }
+        });
+
+        angular.forEach(datadimensions, function(dimensionValue,index){
+
+            angular.forEach(dataArray, function(dataValue){
+                if ( dataValue == dimensionValue.id ) {
+
+                    datadimensions[index].isExpanded = false;
+                    datadimensions[index].isActive = false;
+                    datadimensions[index].selected = true;
+                }
+            });
+        });
+
+        return datadimensions;
+    }
+
+    home.getSelectionCriterias = function(item, selectedItems,selectedType,newUrl){
+
+        var organisationUnit = "";
+        var period = "";
+        var data = "";
+        var category = "";
+        var type = "";
+
+        if ( selectedType == "orgUnit" && selectedItems.length > 0 ) {
+            angular.forEach(selectedItems , function(item){
+                organisationUnit+=item.id+";";
+            })
+
+        }
+
+        if ( selectedType == "period" && selectedItems.length > 0 ) {
+            angular.forEach(selectedItems , function(item){
+                period+=item.value+";";
+            })
+        }
+
+        if ( selectedType == "data" && selectedItems.length > 0 ) {
+            angular.forEach(selectedItems , function(item){
+                data+=item.id+";";
+            })
+        }
+
+
+        if ( selectedType == "category" && selectedItems.length > 0 ) {
+            console.log(selectedItems)
+            angular.forEach(selectedItems , function(item){
+                category = item.id;
+            })
+        }
+
+
+        var extractingCategory = newUrl.split('/category/');
+        var extractingType = extractingCategory[0].split('/type/');
+        var extractingDx = extractingType[0].split('/dx/');
+        var extractingOrgUnit = extractingDx[0].split('/orgunit/');
+        var extractingPeriod = extractingOrgUnit[0].split('/period/');
+
+        if (organisationUnit==""){
+            organisationUnit = extractingOrgUnit[1];
+        }
+        if (data==""){
+            data = extractingDx[1];
+        }
+        if (period==""){
+            period = extractingPeriod[1];
+        }
+
+        if (category==""){
+            category = extractingCategory[1];
+        }
+        if (type==""){
+            type = extractingType[1];
+        }
+
+        return {newUrl:extractingPeriod[0]+'/period/'+period+'/orgunit/'+organisationUnit+'/dx/'+data+'/type/'+type+'/category/'+category,category:category}
+
+    }
+
+    home.prepareUrlForChange = function (url,param,paramValue) {
+        var extractingCategory = url.split('/category/');
+        var extractingType = url.split('/type/');
+        var extractingDx = extractingType[0].split('/dx/');
+        var extractingOrgUnit = extractingDx[0].split('/orgunit/');
+        var extractingPeriod = extractingOrgUnit[0].split('/period/');
+
+        var category = extractingCategory[1];
+
+        var organisationUnit = extractingOrgUnit[1];
+
+
+        var data = extractingDx[1];
+
+        var period = extractingPeriod[1];
+
+
+        return {newUrl:extractingPeriod[0]+'/period/'+period+'/orgunit/'+organisationUnit+'/dx/'+data+'/type/'+paramValue+'/category/'+category};
+    }
+
+    home.setSelectedCategory = function(dataArray,category) {
+        angular.forEach(dataArray,function(value,index){
+            if ( value.id == category ) {
+                dataArray[index].isExpanded = false;
+                dataArray[index].isActive = false;
+                dataArray[index].selected = true;
+            }
+        });
+
+        return dataArray;
+    }
+
     home.loadChartStorage = function(){
 
         var url = "../../../api/dataStore/chartsStorage/availableCharts";
@@ -273,7 +412,6 @@ articlesServices.service('articlesService',['$http','DHIS2URL',function($http,DH
 
     }
 
-
     home.updateInformations = function(dataArray){
 
         var url = "../../../api/dataStore/informationSharing/sharing";
@@ -281,14 +419,11 @@ articlesServices.service('articlesService',['$http','DHIS2URL',function($http,DH
 
     }
 
-
-
     home.retrieveSetting = function(){
 
         var url = "../../../api/systemSettings";
         return $http.get(url).then(handleSuccess, handleError("Error loading Messages"));
     }
-
 
     home.postSettings = function(dataObject){
         var url = "../../../api/systemSettings";
@@ -339,9 +474,45 @@ articlesServices.service('articlesService',['$http','DHIS2URL',function($http,DH
     }
 
     home.getReportTables = function(){
-        var url = "../../../api/reportTables.json?paging=false";
+
+        var url = "../../../api/reportTables.json?fields=:all&paging=false";
         return $http.get(url).then(handleSuccess, handleError("Error Loading favourites"));
     }
+
+    home.loadDocuments = function(){
+        var url = "/api/documents.json?paging=false";
+        return $http({method:'GET',url:url}).then(handleSuccess, handleError("Error  updating external links"));
+
+    }
+
+
+    home.prepareLeftMenu = function(reportTables){
+
+        var mainmenu = new Array();
+        var menuarr = [{'name':"Agriculture",values:[]},{'name':"Livestock",values:[]},{'name':"Fishery",values:[]},{'name':"Trade",values:[]},{'name':"General Information",values:[]}];
+        var arrayCounter = 0;
+
+
+        angular.forEach( reportTables , function( value ){
+            var arr = value.displayName.split(':');
+            if(arr.length != 1){
+                angular.forEach(menuarr,function(menuValue){
+                    if(arr[0] == menuValue.name){
+                        var filterDimension = "pe";
+                        if (value.filterDimensions.length > 0){
+                            filterDimension = value.filterDimensions[0];
+                        }
+                        menuValue.values.push({id:value.id,displayName:arr[1],shortName:arr[1].substring(0,20)+"...",period:home.preparePeriodFromReportTables(value),orgUnit:home.prepareOrgUnitFromReportTables(value),dx:home.prepareDxFromReportTables(value),filter:filterDimension});
+                    }
+                })
+
+            }
+        });
+
+        return menuarr;
+
+    }
+
 
     home.getUsers = function(){
         var url = "../../../api/users.json?paging=false";
@@ -363,11 +534,145 @@ articlesServices.service('articlesService',['$http','DHIS2URL',function($http,DH
         return finalUsers;
     }
 
+    home.sortOrganisationUnits = function (orgUnit,orgUnitArray) {
+
+        angular.forEach(orgUnitArray,function (unitData) {
+
+            if ( unitData == orgUnit.id ) {
+                orgUnit.isExpanded = false;
+                orgUnit.isActive = false
+                orgUnit.selected = true;
+
+            }
+
+        })
+
+        var that = this;
+        if (orgUnit.children) {
+            orgUnit.children.sort(function (child1, child2) {
+                return orgUnitFunction(child1).localeCompare(orgUnitFunction(child2));
+            });
+            orgUnit.children.forEach(function (child) {
+                that.sortOrganisationUnits(child,orgUnitArray);
+            })
+        }
+    }
+
+    home.getOrgUnitTree = function(userOrgUnit){
+        var orgUnitIds = [];
+        userOrgUnit.forEach(function (orgUnit) {
+            orgUnitIds.push(orgUnit.id);
+        });
+        return $http.get("../../../api/organisationUnits.json?filter=id:in:[" + orgUnitIds + "]&fields=id,name,level,children[id,name,level,children[id,name,level,children[id,name,level,children[id,name,level,children]]]]");
+
+    }
 
     home.loggedUserRole = function(){
         var url = "../../../api/me/authorization.json";
         return $http.get(url).then(handleSuccess, handleError('Error loading logeged in user'));
     }
+
+    home.prepareLeftMenu = function(reportTables){
+
+        var mainmenu = new Array();
+        var menuarr = [{'name':"Agriculture",values:[]},{'name':"Livestock",values:[]},{'name':"Fishery",values:[]},{'name':"Trade",values:[]},{'name':"General Information",values:[]}];
+        var arrayCounter = 0;
+
+
+        angular.forEach( reportTables , function( value ){
+            var arr = value.displayName.split(':');
+            if(arr.length != 1){
+                angular.forEach(menuarr,function(menuValue){
+                    if(arr[0] == menuValue.name){
+                        var filterDimension = "pe";
+                        if (value.filterDimensions.length > 0){
+                            filterDimension = value.filterDimensions[0];
+                        }
+                        menuValue.values.push({id:value.id,displayName:arr[1],shortName:arr[1].substring(0,20)+"...",period:home.preparePeriodFromReportTables(value),orgUnit:home.prepareOrgUnitFromReportTables(value),dx:home.prepareDxFromReportTables(value),filter:filterDimension});
+                    }
+                })
+
+            }
+        });
+
+        return menuarr;
+
+    }
+
+    home.preparePeriodFromReportTables = function(reportTable){
+        var periodLength = reportTable.periods.length;
+        var period = "";
+
+        angular.forEach(reportTable.periods, function(value){
+
+            if ( periodLength >1 ) {
+                period+=";"
+            }
+
+            period+=value.id;
+        });
+
+        return period;
+
+    }
+
+    home.prepareOrgUnitFromReportTables = function(reportTable){
+
+        var organisationUnitsLength = reportTable.organisationUnits.length;
+        var organisationUnits = "";
+
+        angular.forEach(reportTable.organisationUnits, function(value){
+
+            if ( organisationUnitsLength >1 ) {
+                organisationUnits+=";"
+            }
+
+            organisationUnits+=value.id;
+        });
+
+        return organisationUnits;
+    }
+
+    home.prepareDxFromReportTables = function(reportTable){
+
+        var dataDimensionItemsLength = reportTable.dataDimensionItems.length;
+        var dataDimensionItems = "";
+
+        angular.forEach(reportTable.dataDimensionItems, function(value){
+
+            if ( value.dataDimensionItemType == "AGGREGATE_DATA_ELEMENT" ) {
+
+                dataDimensionItems+=value.dataElement.id+";"
+            }
+
+
+            if ( value.dataDimensionItemType == "INDICATOR" ) {
+
+                dataDimensionItems+=value.indicator.id+";"
+            }
+        });
+        dataDimensionItems = dataDimensionItems.substring(0, dataDimensionItems.length-1);
+
+        return dataDimensionItems;
+    }
+
+    home.getAnalytics = function(url){
+
+        return $http.get(url).then(handleSuccess, handleError('Error getting analytics'));
+
+    }
+
+    home.processUsers = function(users){
+        var finalUsers = []
+        angular.forEach(users,function(user,index){
+            user.icon = "<i class='fa fa-user'></i>";
+            finalUsers.push(user);
+        })
+
+        return finalUsers;
+    }
+
+
     return home;
 }]);
 
