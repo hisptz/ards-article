@@ -78,7 +78,21 @@
 
         }
     </style>
+    <div class="row">
+        <div id="page_switcher" style="margin-right: 2.5em;">
+            <div class="onoffswitch pull-right">
+                <input type="checkbox" checked="checked" class="toggleBtn onoffswitch-checkbox" ng-click="switchPage()"  id="onoffswitch6" >
+                <label for="onoffswitch6" class="onoffswitch-label">
+                    <div class="onoffswitch-inner " style=""></div>
+                    <div class="onoffswitch-switch" style="text-align: center;"><i class="fa fa-arrow-left"></i></div>
+                </label>
+            </div>
+
+        </div>
+    </div>
+<br/>
     <div class="col-md-12" id="articles">
+
         <accordion close-others="oneAtATime" ng-repeat="information in informations">
             <accordion-group >
                 <accordion-heading>
